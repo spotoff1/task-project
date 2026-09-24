@@ -72,3 +72,8 @@ class TestFilterByStatus(unittest.TestCase):
         opened = [t for t in tasks if t['status'] == 'open']
         self.assertEqual(len(opened), 1)
         self.assertEqual(opened[0]['title'], 'Открытая')
+
+class TestPriorityValidation(unittest.TestCase):
+    def test_invalid_priority(self):
+        with self.assertRaises(ValueError):
+            task_app.validate_priority('urgent')
