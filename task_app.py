@@ -4,7 +4,7 @@ import json
 import os
 
 DATA_FILE = "tasks.json"
-DEFAULT_PRIORITY = "normal"
+DEFAULT_PRIORITY = "high"  # branch b
 
 
 def load_tasks():
