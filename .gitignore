@@ -1,0 +1,6 @@
+@"
+__pycache__/
+*.pyc
+tasks.json
+.venv/
+"@ | Out-File -Encoding utf8 .gitignore
