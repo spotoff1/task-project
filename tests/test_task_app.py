@@ -1,0 +1,40 @@
+import unittest
+import os
+import json
+import tempfile
+import task_app
+
+
+class TestTaskApp(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.NamedTemporaryFile(delete=False, suffix='.json')
+        self.tmp.close()
+        task_app.DATA_FILE = self.tmp.name
+
+    def tearDown(self):
+        os.unlink(self.tmp.name)
+
+    def test_add_task(self):
+        task_app.add_task('Тестовая задача')
+        with open(self.tmp.name, encoding='utf-8') as f:
+            tasks = json.load(f)
+        self.assertEqual(len(tasks), 1)
+        self.assertEqual(tasks[0]['title'], 'Тестовая задача')
+
+
+if __name__ == '__main__':
+    unittest.main()
+class TestAddTaskPriority(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.NamedTemporaryFile(delete=False, suffix='.json')
+        self.tmp.close()
+        task_app.DATA_FILE = self.tmp.name
+
+    def tearDown(self):
+        os.unlink(self.tmp.name)
+
+    def test_add_with_priority(self):
+        task_app.add_task('Срочная', priority='high')
+        with open(self.tmp.name, encoding='utf-8') as f:
+            tasks = json.load(f)
+        self.assertEqual(tasks[0]['priority'], 'high')
