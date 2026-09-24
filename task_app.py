@@ -4,14 +4,17 @@ import json
 import os
 
 DATA_FILE = "tasks.json"
-DEFAULT_PRIORITY = "normal"  # branch a
+DEFAULT_PRIORITY = "normal"
 
 
 def load_tasks():
     if not os.path.exists(DATA_FILE):
         return []
     with open(DATA_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
+        content = f.read().strip()
+        if not content:
+            return []
+        return json.loads(content)
 
 
 def save_tasks(tasks):
