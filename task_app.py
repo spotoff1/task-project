@@ -82,3 +82,6 @@ def validate_priority(priority):
     if priority not in VALID_PRIORITIES:
         raise ValueError(f"Недопустимый приоритет: {priority}")
     return priority
+
+def filter_by_status(tasks, status):
+    return [t for t in tasks if t['status'] == status]
