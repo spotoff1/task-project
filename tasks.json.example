@@ -1,0 +1,5 @@
+@"
+[
+  {"id": 1, "title": "Пример задачи", "status": "open", "priority": "normal"}
+]
+"@ | Out-File -Encoding utf8 tasks.json.example
