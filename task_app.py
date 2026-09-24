@@ -85,3 +85,9 @@ def validate_priority(priority):
 
 def filter_by_status(tasks, status):
     return [t for t in tasks if t['status'] == status]
+
+PRIORITY_ORDER = {"high": 0, "normal": 1, "low": 2}
+
+
+def sort_tasks_by_priority(tasks):
+    return sorted(tasks, key=lambda t: PRIORITY_ORDER.get(t.get('priority', 'normal'), 1))
