@@ -1,4 +1,4 @@
-@"
+
 import argparse
 import json
 import os
@@ -74,4 +74,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-"@ | Out-File -Encoding utf8 task_app.py
